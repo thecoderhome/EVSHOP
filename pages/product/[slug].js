@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Store } from '@/utils/Store';
 
 export default function ProductScreen() {
+  const router = useRouter();
   const { query } = useRouter();
   const { slug } = query;
   const { state, dispatch } = useContext(Store);
@@ -28,6 +29,7 @@ export default function ProductScreen() {
     }
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    router.push('/cart');
   }
 
   return (
